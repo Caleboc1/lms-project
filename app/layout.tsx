@@ -5,6 +5,7 @@ import { ClerkProvider, SignInButton,
   SignedIn,
   SignedOut,
   UserButton } from '@clerk/nextjs'
+import { ToastProvider } from "@/components/providers/toaster-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,13 +23,19 @@ export default function RootLayout({
     <ClerkProvider>
     <html lang="en">
       <body className={inter.className}>
+        <ToastProvider/>
+        <header>
       <SignedOut>
           <SignInButton />
         </SignedOut>
         <SignedIn>
           <UserButton />
         </SignedIn>
-        {children}</body>
+        </header>
+        <main>
+        {children}
+        </main>
+        </body>
     </html>
     </ClerkProvider>
   );
