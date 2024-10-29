@@ -83,6 +83,7 @@ model MuxData {
   assetId    String
   playbackId String?
 
+
   chapterId String  @unique
   chapter   Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
 }
