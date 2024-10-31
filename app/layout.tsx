@@ -28,14 +28,16 @@ export default function RootLayout({
         <body className={inter.className}>
           <ConfettiProvider />
           <ToastProvider />
-          <header>
+          <div >
+          <header className="mt-[40px]">
             <SignedOut>
-              <SignInButton />
+              {/* <SignInButton /> */}
             </SignedOut>
             <SignedIn>
               <UserButton />
             </SignedIn>
           </header>
+          </div>
           <main>
             {children}
           </main>
