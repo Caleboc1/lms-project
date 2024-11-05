@@ -20,10 +20,6 @@ const ChapterIdPage = async ({
 }) => {
     const { userId } = auth();
 
-    if (!userId) {
-        return redirect("/");
-    }
-
     const chapter = await db.chapter.findUnique({
         where: {
             id: params.chapterId,
@@ -33,10 +29,16 @@ const ChapterIdPage = async ({
             muxData: true,
         },
     });
-
-    if (!chapter) {
-        return redirect("/")
+    
+    if (!userId || !chapter) {
+        return redirect("/");
     }
+
+
+
+    // if (!chapter) {
+    //     return redirect("/")
+    // }
 
     const requiredFields = [
         chapter.title,
