@@ -8,6 +8,7 @@ import { PlaybackIDs } from "@mux/mux-node/resources/video/playback-ids.mjs";
 import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { Separator } from "@/components/ui/separator";
 import { Preview } from "@/components/preview";
+import { CourseProgressButton } from "./_components/course-progress-button";
 
 
 const ChapterIdPage = async ({
@@ -43,7 +44,7 @@ const ChapterIdPage = async ({
     const completeOnEnd = !!purchase && !userProgress?.isCompleted;
 
     return (
-        <div>
+        <div className="pt-8">
             {userProgress?.isCompleted && (
                 <Banner
                     variant="success"
@@ -55,7 +56,7 @@ const ChapterIdPage = async ({
                     variant="warning"
                     label="You need to purchase this course to watch this chapter." />
             )}
-            <div className="flex flex-col max-w-4xl mx-auto pb-20">
+            <div className="flex flex-col max-w-4xl mx-auto pb-20 ">
                 <div className="p-4">
                     <VideoPlayer
                         chapterId={params.chapterId}
@@ -70,9 +71,11 @@ const ChapterIdPage = async ({
                     <div className="p-4 flex flex-col md:flex-row items-center justify-between">
                         <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
                         {purchase ? (
-                            <div>
-                            {/* //todo: add courseprogressbutton */}
-                            </div>
+                            <CourseProgressButton 
+                            chapterId={params.chapterId}
+                            courseId={params.courseId}
+                            nextChapterId={nextChapter?.id}
+                            isCompleted={!!userProgress?.isCompleted}/>
                         ):(
                             <CourseEnrollButton 
                             courseId={params.courseId}

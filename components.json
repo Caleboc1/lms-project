@@ -12,13 +12,9 @@
   },
   "aliases": {
     "components": "@/components",
-    "utils": "@/lib/utils"
-  },
-  "components": {
-    "textarea": {
-      "importPath": "@/components/ui/textarea",
-      "element": "Textarea"
-    }
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
   }
 }
-
